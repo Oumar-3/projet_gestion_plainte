@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier la plainte</title>
+  
+  </head>
+  <body>
+
+    <form method="POST">
+        <div class="cont">
+            
+          <div class="form sign-in">
+            <h2>Modifier la plainte</h2>
+
+            <!-- CSRF Token -->
+            <span>{% csrf_token %}</span>
+            
+            <!-- Affichage du formulaire -->
+            <div>
+              {{ form.as_p }}
+            </div>
+
+            <!-- Bouton de soumission -->
+            <button type="submit" class="submit">Modifier</button>
+
+            <!-- Lien de retour -->
+            <a href="{% url 'liste_plainte' %}" class="cancel-button">Retour</a>
+            
+          </div>
+          
+          <div class="sub-cont">
+            <div class="img"></div>
+          </div>
+        
+        </div>
+    </form> 
+
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/inscription.css' %}">
+<div class="container">
+    <h1>Ajouter une nouvelle plainte</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Soumettre</button>
+    </form>
+    <a href="{% url 'liste_plainte' %}" class="button">Retour</a>
+</div>

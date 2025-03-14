@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inscription</title>
+    <link rel="stylesheet" href="{% static 'css/inscription.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Inscription</h1>
+        <form method="post">
+            {% csrf_token %}
+
+            <div>
+                <label for="{{ form.username.id_for_label }}">Nom d’utilisateur :</label>
+                {{ form.username }}
+                <p class="helptext">{{ form.username.help_text }}</p>
+            </div>
+
+            <div>
+                <label for="{{ form.password1.id_for_label }}">Mot de passe :</label>
+                {{ form.password1 }}
+                <ul class="helptext">
+                    {% for message in form.password1.help_text.splitlines %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div>
+                <label for="{{ form.password2.id_for_label }}">Confirmation du mot de passe :</label>
+                {{ form.password2 }}
+                <p class="helptext">{{ form.password2.help_text }}</p>
+            </div>
+
+            <button type="submit">S'inscrire</button>
+        </form>
+    </div>
+</body>
+</html>

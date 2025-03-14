@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supprimer plainte</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+
+    <form method="POST">
+        <div class="cont">
+          <div class="form sign-in">
+            <h2>Supprimer la plainte</h2>
+            
+            <p class="forgot-pass">Voulez-vous vraiment supprimer la plainte intitulée "{{ plainte.titre }}" ?</p>
+            
+            {% csrf_token %}
+            <button type="submit" class="submit">Oui, supprimer</button>
+            <a href="{% url 'liste_plainte' %}" class="cancel-link">Annuler</a>
+          </div>
+          <div class="sub-cont">
+            <div class="img"></div>
+          </div>
+        </div>
+    </form>    
+
+  </body>
+</html>
