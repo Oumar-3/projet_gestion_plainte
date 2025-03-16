@@ -4,16 +4,18 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/inscription.css' %}">
     <title>Modifier la plainte</title>
   
   </head>
   <body>
 
-    <form method="POST">
+    
         <div class="cont">
             
-          <div class="form sign-in">
-            <h2>Modifier la plainte</h2>
+          <div class="container">
+            <h1>Modifier la plainte</h1>
+            <form method="POST">
 
             <!-- CSRF Token -->
             <span>{% csrf_token %}</span>
@@ -25,18 +27,12 @@
 
             <!-- Bouton de soumission -->
             <button type="submit" class="submit">Modifier</button>
-
+          </form>
             <!-- Lien de retour -->
             <a href="{% url 'liste_plainte' %}" class="cancel-button">Retour</a>
             
           </div>
-          
-          <div class="sub-cont">
-            <div class="img"></div>
-          </div>
-        
         </div>
-    </form> 
 
   </body>
 </html>
