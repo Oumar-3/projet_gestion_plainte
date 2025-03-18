@@ -1,31 +1,26 @@
-{% load static %}
+{% extends 'plainte/base.html' %}
+{% load static %} 
+{% block title %}Supprimer plainte{% endblock %}
 
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supprimer plainte</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  </head>
-  <body>
+{% block content %}
+    <!-- Arrière-plan sombre -->
+    <div class="background-container-dark">
+        <div class="background-overlay-dark"></div>
+    </div>
 
-    <form method="POST">
-        <div class="cont">
-          <div class="form sign-in">
-            <h2>Supprimer la plainte</h2>
-            
-            <p class="forgot-pass">Voulez-vous vraiment supprimer la plainte intitulée "{{ plainte.titre }}" ?</p>
-            
-            {% csrf_token %}
-            <button type="submit" class="submit">Oui, supprimer</button>
-            <a href="{% url 'liste_plainte' %}" class="cancel-link">Annuler</a>
-          </div>
-          <div class="sub-cont">
-            <div class="img"></div>
-          </div>
+    <div class="container animate__animated animate__fadeIn">
+        <div class="card mx-auto mt-5" style="max-width: 500px;">
+            <div class="card-header bg-danger text-white">
+                <h2 class="card-title text-center">Supprimer la plainte</h2>
+            </div>
+            <div class="card-body">
+                <p class="card-text text-center">Voulez-vous vraiment supprimer la plainte intitulée <strong>"{{ plainte.titre }}"</strong> ?</p>
+                <form method="POST" class="text-center">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Oui, supprimer</button>
+                    <a href="{% url 'liste_plainte' %}" class="btn btn-secondary">Annuler</a>
+                </form>
+            </div>
         </div>
-    </form>    
-
-  </body>
-</html>
+    </div>
+{% endblock %}

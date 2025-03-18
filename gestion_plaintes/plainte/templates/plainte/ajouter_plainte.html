@@ -1,11 +1,23 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/inscription.css' %}">
-<div class="container">
-    <h1>Ajouter une nouvelle plainte</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Soumettre</button>
-    </form>
-    <a href="{% url 'liste_plainte' %}" class="button">Retour</a>
-</div>
+{% extends 'plainte/base.html' %}
+{% load static %} 
+{% block title %}Ajouter une plainte{% endblock %}
+
+{% block content %}
+    <!-- Arrière-plan avec dégradé et image floue -->
+    <div class="background-container">
+        <div class="background-overlay"></div>
+        <img src="{% static 'images/a4.jpg' %}" class="background-image" alt="Image de fond">
+    </div>
+
+    <div class="container animate__animated animate__fadeIn">
+        <h1 class="text-center mb-4 animate__animated animate__bounceIn">Ajouter une nouvelle plainte</h1>
+        <form method="POST" class="animate__animated animate__fadeInUp">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Soumettre</button>
+        </form>
+        <a href="{% url 'liste_plainte' %}" class="btn btn-secondary w-100 mt-3">Retour</a>
+    </div>
+{% endblock %}

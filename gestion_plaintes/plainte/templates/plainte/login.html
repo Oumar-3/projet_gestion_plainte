@@ -1,20 +1,22 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Connexion</title>
-    <link rel="stylesheet" href="{% static 'css/inscription.css' %}">
-</head>
-<body>
-    <div class="container">
-        <h1>Connexion</h1>
-        <form method="post">
+{% extends 'plainte/base.html' %}
+{% load static %} 
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+    <!-- Arrière-plan avec dégradé et image floue -->
+    <div class="background-container">
+        <div class="background-overlay"></div>
+        <img src="{% static 'images/a4.jpg' %}" class="background-image" alt="Image de fond">
+    </div>
+
+    <div class="container animate__animated animate__fadeIn">
+        <h1 class="text-center mb-4 animate__animated animate__bounceIn">Connexion</h1>
+        <form method="post" class="animate__animated animate__fadeInUp">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Se connecter</button>
+            <button type="submit" class="btn btn-primary w-100">Se connecter</button>
         </form>
-        <p>Pas encore inscrit ? <a href="{% url 'inscription' %}">Créer un compte</a></p>
-        <a href="{% url 'accueil' %}" type="submit">Retour</a>
+        <p class="text-center mt-3">Pas encore inscrit ? <a href="{% url 'inscription' %}">Créer un compte</a></p>
+        <a href="{% url 'accueil' %}" class="btn btn-secondary w-100">Retour</a>
     </div>
-</body>
-</html>
+{% endblock %}

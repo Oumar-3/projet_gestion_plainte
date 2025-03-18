@@ -1,45 +1,41 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<title>Liste des Plaintes</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <a href="{% url 'ajouter_plainte' %}" class="btn btn-warning btn-sm">Ajouter une plainte</a>
-    <a href="{% url 'accueil' %}" class="btn btn-warning btn-sm">Quitter</a>
+{% extends 'plainte/base.html' %}
+{% load static %} 
+{% block title %}Liste des Plaintes{% endblock %}
 
-    <h1>Liste des Plaintes</h1>
-    <table class="table table-striped table-bordered">...
-        <thead class="table-dark">
-            <tr>
-                <th>id</th>
-                <th>titre</th>
-                <th>statut</th>
-                <th>categorie</th>
-                <th>description</th>
-                <th>option</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for plainte in plaintes %}
-            <tr>
-                <td>{{ plainte.id }}</td>
-                <td>{{ plainte.titre  }}</td>
-                <td>{{ plainte.statut }}</td>
-                <td>{{ plainte.categorie }}</td>
-                <td>{{ plainte.description }}</td>
+{% block content %}
+    <!-- Arrière-plan léger -->
+    <div class="background-container-light">
+        <div class="background-overlay-light"></div>
+    </div>
 
-
-               
-                <td class="table-light">    
-                    <a  href="{% url 'modifier_plainte' plainte.id %}"  class="btn btn-warning btn-sm">Modifier</a>
-                    <a href="{% url 'supprimer_plainte' plainte.id %}" class="btn btn-danger btn-sm">Supprimer</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4 animate__animated animate__bounceIn">Liste des Plaintes</h1>
+        <table class="table table-striped table-bordered animate__animated animate__fadeIn">
+            <thead class="table-dark">
+                <tr>
+                    <th>id</th>
+                    <th>titre</th>
+                    <th>statut</th>
+                    <th>categorie</th>
+                    <th>description</th>
+                    <th>option</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for plainte in plaintes %}
+                <tr class="animate__animated animate__fadeInUp">
+                    <td>{{ plainte.id }}</td>
+                    <td>{{ plainte.titre }}</td>
+                    <td>{{ plainte.statut }}</td>
+                    <td>{{ plainte.categorie }}</td>
+                    <td>{{ plainte.description }}</td>
+                    <td>
+                        <a href="{% url 'modifier_plainte' plainte.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                        <a href="{% url 'supprimer_plainte' plainte.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

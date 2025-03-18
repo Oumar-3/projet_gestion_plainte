@@ -1,38 +1,23 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/inscription.css' %}">
-    <title>Modifier la plainte</title>
-  
-  </head>
-  <body>
+{% extends 'plainte/base.html' %}
+{% load static %} 
+{% block title %}Modifier la plainte{% endblock %}
 
-    
-        <div class="cont">
-            
-          <div class="container">
-            <h1>Modifier la plainte</h1>
-            <form method="POST">
+{% block content %}
+    <!-- Arrière-plan avec dégradé et image floue -->
+    <div class="background-container">
+        <div class="background-overlay"></div>
+        <img src="{% static 'images/a4.jpg' %}" class="background-image" alt="Image de fond">
+    </div>
 
-            <!-- CSRF Token -->
-            <span>{% csrf_token %}</span>
-            
-            <!-- Affichage du formulaire -->
-            <div>
-              {{ form.as_p }}
+    <div class="container animate__animated animate__fadeIn">
+        <h1 class="text-center mb-4 animate__animated animate__bounceIn">Modifier la plainte</h1>
+        <form method="POST" class="animate__animated animate__fadeInUp">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.as_p }}
             </div>
-
-            <!-- Bouton de soumission -->
-            <button type="submit" class="submit">Modifier</button>
-          </form>
-            <!-- Lien de retour -->
-            <a href="{% url 'liste_plainte' %}" class="cancel-button">Retour</a>
-            
-          </div>
-        </div>
-
-  </body>
-</html>
+            <button type="submit" class="btn btn-primary w-100">Modifier</button>
+        </form>
+        <a href="{% url 'liste_plainte' %}" class="btn btn-secondary w-100 mt-3">Retour</a>
+    </div>
+{% endblock %}
